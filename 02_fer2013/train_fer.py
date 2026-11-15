@@ -532,9 +532,9 @@ def export_analysis(history_df, r18_probs, dn121_probs, val_targets,
     x = np.arange(len(class_names))
     w_bar = 0.26
 
-    b1 = ax.bar(x - w_bar, per_class_df["Baseline_v2_F1"], w_bar, label="Baseline ResNet18 v2 (Kaggle 0.651)", color="#94a3b8")
+    b1 = ax.bar(x - w_bar, per_class_df["Baseline_v2_F1"], w_bar, label="Baseline ResNet18 v2 (Online 0.651)", color="#94a3b8")
     b2 = ax.bar(x, per_class_df["ResNet18_v4_F1"], w_bar, label="ResNet18 v4 + TenCrop", color="#3b82f6")
-    b3 = ax.bar(x + w_bar, per_class_df["Ensemble_F1"], w_bar, label="Ensemble R18_v4 + DN121_v4 (Kaggle 0.719)", color="#ef4444")
+    b3 = ax.bar(x + w_bar, per_class_df["Ensemble_F1"], w_bar, label="Ensemble R18_v4 + DN121_v4 (Online 0.719)", color="#ef4444")
 
     ax.set_ylim(0.40, 0.98)
     ax.set_xticks(x)
