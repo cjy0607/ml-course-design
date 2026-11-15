@@ -35,14 +35,14 @@
 
 ## 运行环境
 
-- 平台：竞赛提供的 Notebook 环境
+- 平台：课程提供的 Notebook 环境
 - GPU：NVIDIA Tesla T4（16 GB）
 - Python 3.10，PyTorch 2.x，torchvision 0.15+
 - 其他依赖见 `requirements.txt`
 
 ## 运行说明
 
-四个脚本中的数据集路径均按竞赛环境的挂载目录编写，例如：
+四个脚本中的数据集路径均按运行环境的挂载目录编写，例如：
 
 - `/kaggle/input/competitions/2026task1/...`
 - `/kaggle/input/competitions/2026task2/fer_data/fer_data`
