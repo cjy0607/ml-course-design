@@ -1,0 +1,9 @@
+﻿Stage,Model_Variant,Resolution,Key_Techniques,Val_Acc_Pct,Val_Macro_F1,Online_Score
+Stage 1,"ResNet18 v1 (Baseline, Unmapped)",48x48,ImageNet Pretrained + Basic Finetune,65.77,0.6383,0.405
+Stage 2,ResNet18 v2 (Label Mapped + Tuned),48x48,Official Label Mapping + Label Smoothing (0.1),67.15,0.6533,0.651
+Stage 3,ResNet18 + Flip TTA,48x48,2-View Horizontal Flip TTA,68.0,0.6619,
+Stage 4,ResNet18 + CBAM Attention,48x48,Channel & Spatial Attention in Layer3/Layer4,66.97,0.6532,
+Stage 5,ResNet18 v4 (Single View),112x112,Remove MaxPool + Mixup + RandomErasing + CosineLR,69.55,0.6773,
+Stage 6,ResNet18 v4 + TenCrop (10-View),112x112,High-Res Stem + 10-Crop Softmax Averaging,70.58,0.6894,
+Stage 7,DenseNet121 v4 + TenCrop (10-View),112x112,Remove Pool0 + Class-Balanced Weights + TenCrop,71.04,0.6934,
+Stage 8,Heterogeneous Ensemble (0.4 R18 + 0.6 DN121),112x112,Cross-Architecture Feature Fusion + TenCrop,72.7,0.7105,0.719
