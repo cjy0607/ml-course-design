@@ -1,4 +1,4 @@
-﻿Stage,Model_Variant,Resolution,Key_Techniques,Val_Acc_Pct,Val_Macro_F1,Online_Score
+﻿Stage,Model_Variant,Resolution,Key_Techniques,Val_Acc_Pct,Val_Macro_F1,Test_Score
 Stage 1,"ResNet18 v1 (Baseline, Unmapped)",48x48,ImageNet Pretrained + Basic Finetune,65.77,0.6383,0.405
 Stage 2,ResNet18 v2 (Label Mapped + Tuned),48x48,Official Label Mapping + Label Smoothing (0.1),67.15,0.6533,0.651
 Stage 3,ResNet18 + Flip TTA,48x48,2-View Horizontal Flip TTA,68.0,0.6619,

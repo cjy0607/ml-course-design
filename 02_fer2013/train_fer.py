@@ -380,28 +380,28 @@ def export_analysis(history_df, r18_probs, dn121_probs, val_targets,
     ablation_data = [
         {"Stage": "Stage 1", "Model_Variant": "ResNet18 v1 (Baseline, Unmapped)",
          "Resolution": "48x48", "Key_Techniques": "ImageNet Pretrained + Basic Finetune",
-         "Val_Acc_Pct": 65.77, "Val_Macro_F1": 0.6383, "Online_Score": 0.405},
+         "Val_Acc_Pct": 65.77, "Val_Macro_F1": 0.6383, "Test_Score": 0.405},
         {"Stage": "Stage 2", "Model_Variant": "ResNet18 v2 (Label Mapped + Tuned)",
          "Resolution": "48x48", "Key_Techniques": "Official Label Mapping + Label Smoothing (0.1)",
-         "Val_Acc_Pct": 67.15, "Val_Macro_F1": 0.6533, "Online_Score": 0.651},
+         "Val_Acc_Pct": 67.15, "Val_Macro_F1": 0.6533, "Test_Score": 0.651},
         {"Stage": "Stage 3", "Model_Variant": "ResNet18 + Flip TTA",
          "Resolution": "48x48", "Key_Techniques": "2-View Horizontal Flip TTA",
-         "Val_Acc_Pct": 68.00, "Val_Macro_F1": 0.6619, "Online_Score": None},
+         "Val_Acc_Pct": 68.00, "Val_Macro_F1": 0.6619, "Test_Score": None},
         {"Stage": "Stage 4", "Model_Variant": "ResNet18 + CBAM Attention",
          "Resolution": "48x48", "Key_Techniques": "Channel & Spatial Attention in Layer3/Layer4",
-         "Val_Acc_Pct": 66.97, "Val_Macro_F1": 0.6532, "Online_Score": None},
+         "Val_Acc_Pct": 66.97, "Val_Macro_F1": 0.6532, "Test_Score": None},
         {"Stage": "Stage 5", "Model_Variant": "ResNet18 v4 (Single View)",
          "Resolution": "112x112", "Key_Techniques": "Remove MaxPool + Mixup + RandomErasing + CosineLR",
-         "Val_Acc_Pct": 69.55, "Val_Macro_F1": 0.6773, "Online_Score": None},
+         "Val_Acc_Pct": 69.55, "Val_Macro_F1": 0.6773, "Test_Score": None},
         {"Stage": "Stage 6", "Model_Variant": "ResNet18 v4 + TenCrop (10-View)",
          "Resolution": "112x112", "Key_Techniques": "High-Res Stem + 10-Crop Softmax Averaging",
-         "Val_Acc_Pct": round(r18_acc, 2), "Val_Macro_F1": round(r18_f1, 4), "Online_Score": None},
+         "Val_Acc_Pct": round(r18_acc, 2), "Val_Macro_F1": round(r18_f1, 4), "Test_Score": None},
         {"Stage": "Stage 7", "Model_Variant": "DenseNet121 v4 + TenCrop (10-View)",
          "Resolution": "112x112", "Key_Techniques": "Remove Pool0 + Class-Balanced Weights + TenCrop",
-         "Val_Acc_Pct": round(dn121_acc, 2), "Val_Macro_F1": round(dn121_f1, 4), "Online_Score": None},
+         "Val_Acc_Pct": round(dn121_acc, 2), "Val_Macro_F1": round(dn121_f1, 4), "Test_Score": None},
         {"Stage": "Stage 8", "Model_Variant": "Heterogeneous Ensemble (0.4 R18 + 0.6 DN121)",
          "Resolution": "112x112", "Key_Techniques": "Cross-Architecture Feature Fusion + TenCrop",
-         "Val_Acc_Pct": round(ens_acc, 2), "Val_Macro_F1": round(ens_f1, 4), "Online_Score": 0.719}
+         "Val_Acc_Pct": round(ens_acc, 2), "Val_Macro_F1": round(ens_f1, 4), "Test_Score": 0.719}
     ]
     ablation_df = pd.DataFrame(ablation_data)
     ablation_csv_path = os.path.join(Config.ANALYSIS_DIR, "table2_ablation_study_summary.csv")
@@ -532,9 +532,9 @@ def export_analysis(history_df, r18_probs, dn121_probs, val_targets,
     x = np.arange(len(class_names))
     w_bar = 0.26
 
-    b1 = ax.bar(x - w_bar, per_class_df["Baseline_v2_F1"], w_bar, label="Baseline ResNet18 v2 (Online 0.651)", color="#94a3b8")
+    b1 = ax.bar(x - w_bar, per_class_df["Baseline_v2_F1"], w_bar, label="Baseline ResNet18 v2 (Test 0.651)", color="#94a3b8")
     b2 = ax.bar(x, per_class_df["ResNet18_v4_F1"], w_bar, label="ResNet18 v4 + TenCrop", color="#3b82f6")
-    b3 = ax.bar(x + w_bar, per_class_df["Ensemble_F1"], w_bar, label="Ensemble R18_v4 + DN121_v4 (Online 0.719)", color="#ef4444")
+    b3 = ax.bar(x + w_bar, per_class_df["Ensemble_F1"], w_bar, label="Ensemble R18_v4 + DN121_v4 (Test 0.719)", color="#ef4444")
 
     ax.set_ylim(0.40, 0.98)
     ax.set_xticks(x)
